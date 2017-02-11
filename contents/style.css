@@ -1,0 +1,15 @@
+.MainTable
+{
+	width:60%;
+	text-align:center;
+}
+th
+{
+	color:red;
+}
+.Main
+{
+	width:1300px;
+	margin:0px auto;
+	height:auto;
+}

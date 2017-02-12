@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Created by SharpDevelop.
  * User: PC
  * Date: 2/12/2017
@@ -23,58 +23,54 @@ namespace CP_Ranklist
 	{
 		public Publisher(List <UserInfo> Lst)
 		{
-			int i,j;
-			UserInfo User;
 			StreamWriter Writer = new StreamWriter("...\\...\\...\\index.html");
-			Writer.WriteLine("<!DOCTYPE html>" +
-			                 "<html>" +
-			                 "<head>" +
-			                 "<title>" +
-			                 "Competitive Programming Statistics Ranklist" +
-			                 "</title>" +
-			                 "<link rel = \"stylesheet\" type = \"text/css\" href=\"contents\\style.css\">" +
-			                 "</head>" +
-			                 "<body>" +
-			                 "<div class = \"Main\">" +
-			                 "<h2 class = \"heading2\">" +
-			                 "<center>" +
-			                 "Competitive Programming Statistics Based Ranklist (Codeforces)" +
-			                 "</center>" +
-			                 "</h2>" +
-			                 "<center>" +
-			                 "<table class = \"MainTable\">" +
-			                 "<tr>" +
-			                 "<th>Rank</th>" +
-			                 "<th>Name</th>" +
-			                 "<th>Handle</th>" +
-			                 "<th>Point</th>" +
-			                 "<th>Rating</th>" +
-			                 "<th>Accepted</th>" +
-			                 "<th>Submitted</th>" +
-			                 "</tr>");
-			for (i = 0; i < Lst.Count; i++)
+			Writer.WriteLine("<!DOCTYPE html>");
+			Writer.WriteLine("\t<head>");
+			Writer.WriteLine("\t\t<title>");
+			Writer.WriteLine("\t\t\tCompetitive Programming Statistics Ranklist");
+			Writer.WriteLine("\t\t</title>");
+			Writer.WriteLine("\t\t<link rel = \"stylesheet\" type = \"text/css\" href=\"contents\\style.css\">");
+			Writer.WriteLine("\t</head>");
+			Writer.WriteLine("\t<body>");
+			Writer.WriteLine("\t\t<div class = \"Main\">");
+			Writer.WriteLine("\t\t\t<h2 class = \"heading2\">");
+			Writer.WriteLine("\t\t\t\t<center>");
+			Writer.WriteLine("\t\t\t\t\tCompetitive Programming Statistics Ranklist (Codeforces)");
+			Writer.WriteLine("\t\t\t\t</center>");
+			Writer.WriteLine("\t\t\t</h2>");
+			Writer.WriteLine("\t\t\t<center>");
+			Writer.WriteLine("\t\t\t\t<table class = \"MainTable\">");
+			Writer.WriteLine("\t\t\t\t\t<tr>");
+			Writer.WriteLine("\t\t\t\t\t\t<th>Rank</th>");
+			Writer.WriteLine("\t\t\t\t\t\t<th>Name</th>");
+			Writer.WriteLine("\t\t\t\t\t\t<th>Handle</th>");
+			Writer.WriteLine("\t\t\t\t\t\t<th>Point</th>");
+			Writer.WriteLine("\t\t\t\t\t\t<th>Rating</th>");
+			Writer.WriteLine("\t\t\t\t\t\t<th>Accepted</th>");
+			Writer.WriteLine("\t\t\t\t\t\t<th>Submitted</th>");
+			Writer.WriteLine("\t\t\t\t\t</tr>");
+			for (int i = 0; i < Lst.Count; i++)
 			{
-				User = Lst[i];
-				Writer.WriteLine("<tr>" +
-				                 "<td>{0}</td>" +
-				                 "<td>{1}</td>" +
-				                 "<td> <a href = \"http:www.codeforces.com/profile/{2}\" style = \"text-decoration:none;\"><font color = \"{3}\">{2}</a></td>" +
-				                 "<td>{4}</td>" +
-				                 "<td>{5}</td>" +
-				                 "<td>{6}</td>" +
-				                 "<td>{7}</td>" +
-				                 "</tr>", i+1, User.Name, User.ID, User.Color, User.Point, User.Rating.ToString("#.##"), User.AC, User.Sub);
+				Writer.WriteLine("\t\t\t\t\t<tr>");
+				Writer.WriteLine("\t\t\t\t\t\t<td>{0}</td>", i + 1);
+				Writer.WriteLine("\t\t\t\t\t\t<td>{0}</td>", Lst[i].Name);
+				Writer.WriteLine("\t\t\t\t\t\t<td><a href = \"http:www.codeforces.com/profile/{0}\" style = \"text-decoration:none;\"><font color = \"{1}\">{0}</font></a></td>", Lst[i].ID, Lst[i].Color);
+				Writer.WriteLine("\t\t\t\t\t\t<td>{0}</td>", Lst[i].Point);
+				Writer.WriteLine("\t\t\t\t\t\t<td>{0}</td>", Lst[i].Rating);
+				Writer.WriteLine("\t\t\t\t\t\t<td>{0}</td>", Lst[i].AC);
+				Writer.WriteLine("\t\t\t\t\t\t<td>{0}</td>", Lst[i].Sub);
+				Writer.WriteLine("\t\t\t\t\t</tr>");
 			}
-			Writer.WriteLine("</center>" +
-			                 "</table>" +
-			                 "</div>" +
-			                 "<div class = \"footer\">" +
-			                 "<center>" +
-			                 "<h6> All Rights Reserved &copy; 2017 By: rhzinuk@gmail.com</h6>" +
-			                 "</center>" +
-			                 "</div>" +
-			                 "</body>" +
-			                 "</html>");
+			Writer.WriteLine("\t\t\t</center>");
+			Writer.WriteLine("\t\t\t</table>");
+			Writer.WriteLine("\t\t</div>");
+			Writer.WriteLine("\t\t<div class = \"footer\">");
+			Writer.WriteLine("\t\t\t<center>");
+			Writer.WriteLine("\t\t\t\t<h6> Contact: rhzinuk@gmail.com</h6>");
+			Writer.WriteLine("\t\t\t</center>");
+			Writer.WriteLine("\t\t</div>");
+			Writer.WriteLine("\t</body>");
+			Writer.WriteLine("</html>");
 			Writer.Close();
 		}
 	}

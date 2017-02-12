@@ -1,3 +1,9 @@
+.Main
+{
+	width:1300px;
+	margin:0px auto;
+	height:auto;
+}
 .MainTable
 {
 	width:60%;
@@ -7,9 +13,11 @@ th
 {
 	color:red;
 }
-.Main
+.heading2
 {
-	width:1300px;
-	margin:0px auto;
-	height:auto;
+
+}
+.footer
+{
+
 }

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Created by SharpDevelop.
  * User: PC
  * Date: 2/11/2017
@@ -48,14 +48,14 @@ namespace CP_Ranklist
 	public class Build
 	{
 		public List <UserInfo> Lst;
-		private string ReqUrl;
 		private string ID;
+		private string ReqUrl;
 		private string RetString;
-		private string Name;
 		private WebRequest RetUrl;
-		int tmp,cns;
 		private Stream RetStream;
 		private StreamReader RetReader;
+		private string Name;
+		int tmp,cns;
 		
 		public Build(List <UserInfo> Lst)
 		{
@@ -66,9 +66,18 @@ namespace CP_Ranklist
 		{
 			for (int i = 0; i < Lst.Count; i++)
 			{
-				ProcessRating(i);
-				ProcessInfo(i);
-				ProcessStatus(i);
+				try
+				{
+					ProcessRating(i);
+					ProcessInfo(i);
+					ProcessStatus(i);
+				}
+				catch (Exception err)
+				{
+					Console.WriteLine("An error occured!\nThe handle \"{0}\" might not exist, or something else went wrong.\nPlease try again later!\nPress any key to exit.", Lst[i].ID);
+					Console.ReadKey();
+					Environment.Exit(0);
+				}
 				Lst[i].CalculatePoint();
 				System.Threading.Thread.Sleep( 100 );
 			}
@@ -137,26 +146,13 @@ namespace CP_Ranklist
 			tmp = cns = 0;
 			for (int i = 0; i < RetString.Length - 10; i++)
 			{
-				Name = "";
-				Name += RetString[i];
-				Name += RetString[i+1];
-				Name += RetString[i+2];
-				Name += RetString[i+3];
-				Name += RetString[i+4];
-				Name += RetString[i+5];
-				if (Name == "t\":\"OK")
-				{
-					tmp++;
-				}
-			}
-			for (int i = 0; i < RetString.Length - 10; i++)
-			{
-				Name = "";
-				Name += RetString[i];
-				Name += RetString[i+1];
-				if (Name == "id")
+				if (RetString[i] == 'i' && RetString[i+1] == 'd')
 				{
 					cns++;
+				}
+				else if (RetString[i] == 't' && RetString[i+1] == '"' && RetString[i+2] == ':' && RetString[i+3] == '"' && RetString[i+4] == 'O' && RetString[i+5] == 'K')
+				{
+					tmp++;
 				}
 			}
 			Lst[Idx].AC = tmp;
